@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+      #kalkulator {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        max-width: 400px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      input {
+        padding: 10px;
+        margin: 10px 0;
+        width: calc(100% - 20px);
+        box-sizing: border-box;
+        border: 1px solid #f4f4f4;
+        border-radius: 4px;
+      }
+      #result {
+        margin-top: 20px;
+        font-weight: bold;
+        color: black;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="kalkulator">
+      <h2>kalkulator</h2>
+      <label for="saldo_awal"> Saldo Awal : </label>
+      <input type="number" id="saldo_awal" />
+
+      <label for="bunga_taun"> bunga tahunan % : </label>
+      <input type="number" id="bunga_taun" />
+
+      <label for="periode"> periode dalam tahun : </label>
+      <input type="number" id="periode" />
+
+      <button onclick="totalSavings()">calculate</button>
+
+      <div id="result"></div>
+    </div>
+
+    <script>
+      function totalSavings() {
+        const initialSavings = parseFloat(
+          document.getElementById("saldo_awal").value
+        );
+        const interestRate = parseFloat(
+          document.getElementById("bunga_taun").value
+        );
+        const savingPeriod = parseInt(document.getElementById("periode").value);
+        const interest = (initialSavings * interestRate * savingPeriod) / 100;
+
+        const total = initialSavings + interest;
+        const resultElement = document.getElementById("result");
+        document.getElementById("result").innerHTML =
+          "bunga yang diperoleh sebesar " +
+          interest +
+          "total tabungan setelah" +
+          savingPeriod +
+          " tahun sebesar Rp." +
+          total;
+        //   2;
+        //  resultElement.textContent = `bunga yang diperoleh sebesar ${interest}  total tabungan setelah  ${savingPeriod} tahun sebesar Rp.  ${totalSavings.toFixed(
+        //   2
+        //)}`;
+        console.log(total);
+      }
+    </script>
+  </body>
+</html>

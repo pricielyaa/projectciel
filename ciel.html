@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <button onclick="fetchApi()">fetch</button>
+      <button
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        button
+      </button>
+      <ul id="list"></ul>
+    </div>
+    <table class="table-auto">
+      <thead>
+        <tr>
+          <th>number</th>
+          <th>kolom</th>
+          <th>yyy</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
+          <td>Malcolm Lockyer</td>
+          <td>1961</td>
+        </tr>
+        <tr>
+          <td>Witchy Woman</td>
+          <td>The Eagles</td>
+          <td>1972</td>
+        </tr>
+        <tr>
+          <td>Shining Star</td>
+          <td>Earth, Wind, and Fire</td>
+          <td>1975</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- <button onclick="fetchApi()">try</button> -->
+    <!-- <h3 id="hasil"></h3> -->
+    <!-- <script>
+      const switchCase = () => {
+        let data = prompt("masukkan data anda").toLowerCase();
+        switch (data) {
+          case "senin":
+            alert("meeting");
+            break;
+          default:
+            alert("libur");
+        }-->
+    <script>
+      //   function hitungFaktorial(n) {
+      //     if (n === 0 || n === 1) {
+      //       return 1;
+      //     } else {
+      //       return n * hitungFaktorial(n - 1);
+      //     }
+      //   }
+      //   function result() {
+      //     let input = prompt("masukkan angka");
+      //     let hasil = hitungFaktorial(input);
+      //     alert("hasil faktorial adalah " + hasil);
+      //     // document.getElementById("hasil").innerHTML =
+      //     //   input + "faktorial adalah" + hasil;
+      //   }
+      function fetchApi() {
+        const list = document.getElementById("list");
+        list.innerHTML = "";
+
+        fetch("https://jsonplaceholder.typicode.com/todos")
+          .then((data) => data.json())
+          .then((data) => {
+            data.forEach((element) => {
+              list.innerHTML += ` <li>${element.title}</li>
+              `;
+            });
+          });
+      }
+      //           const card = document.createElement("div");
+      //           card.classList.add("card");
+
+      //           const title = document.createElement("h2");
+      //           title.textContent = element.title;
+
+      //           const body = document.createElement("p");
+      //           body.textContent = element.body;
+
+      //           card.appendChild(title);
+      //           card.appendChild(body);
+      //           //container.appendChild(card);
+      //           console.log(element);
+      //         })
+      //       );
+      //   }
+      //   fetchApi();
+    </script>
+  </body>
+</html>

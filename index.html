@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kalkulator Gaji Karyawan</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+      #kalkulator {
+        background-color: #a56e6e;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        max-width: 400px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      input {
+        padding: 10px;
+        margin: 10px 0;
+        width: calc(100% - 20px);
+        box-sizing: border-box;
+        border: 1px solid #f4f4f4;
+        border-radius: 4px;
+      }
+      #result {
+        margin-top: 20px;
+        font-weight: bold;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="kalkulator">
+      <h2>Kalkulator Gaji Karyawan</h2>
+      <form id="gajiForm">
+        <label for="gajiDasar">Gaji Dasar:</label>
+        <input type="number" id="gajiDasar" required />
+
+        <label for="bonus">Bonus:</label>
+        <input type="number" id="bonus" />
+
+        <label for="potongan">Potongan karyawan:</label>
+        <input type="number" id="potongan" />
+
+        <button type="button" onclick="hitungGaji()">Hitung Gaji</button>
+
+        <h3>Hasil Perhitungan</h3>
+        <p id="hasilGaji"></p>
+      </form>
+    </div>
+
+    <script>
+      function hitungGaji() {
+        // Ambil nilai input
+        var gajiDasar =
+          parseFloat(document.getElementById("gajiDasar").value) || 0;
+        var bonus = parseFloat(document.getElementById("bonus").value) || 0;
+        var potongan =
+          parseFloat(document.getElementById("potongan").value) || 0;
+
+        // Hitung gaji bersih
+        var gajiBersih = gajiDasar + bonus - potongan;
+
+        // Tampilkan hasil
+        document.getElementById("hasilGaji").innerHTML =
+          "Gaji Bersih: " + gajiBersih.toFixed(2);
+      }
+    </script>
+  </body>
+</html>
